@@ -10,7 +10,7 @@ function onChangeSearch(event) {
   const mainTitle = document.querySelector(".main__title");
   mainTitle.textContent = `Search results for "${query}"`;
   const moviesList = document.querySelector(".movies__list");
-  if (allMovies.length === 0) {
+  if (allMovies.length === 0 && query.trim() !== "") {
     moviesList.innerHTML = `
                 <div class="movies__loading--spinner">
                 <i class="fas fa-spinner"></i>
@@ -74,3 +74,26 @@ function renderMovieCard(movie) {
                 </div>
             </div>`;
 }
+
+// Attach search handlers for the input and form submit (Enter key)
+const searchInput = document.getElementById("searchInput");
+const searchForm = document.getElementById("searchForm");
+
+if (searchInput && searchForm) {
+  searchInput.addEventListener("input", onChangeSearch);
+
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      onChangeSearch({ target: searchInput });
+    }
+  });
+
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (searchInput.value.trim() !== "") {
+      onChangeSearch({ target: searchInput });
+    }
+  });
+}
+
