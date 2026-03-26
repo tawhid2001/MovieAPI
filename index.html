@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search - OMDb API</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/830943989e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">Movie Database</h1>
+            <form class="search-form" id="searchForm">
+                <input type="text" class="search-form__input" id="searchInput" placeholder="Search for a movie..." onchange="onChangeSearch(event)">
+                <div class="search-form__icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </form>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main__header">
+            <h2 class="main__title">Search Results</h2>
+            <select class="main__sort-select" name="" id="filter" onchange="filterMovies(event)">
+                <option value="" disabled selected>Sort by...</option>
+                <option value="A TO Z">Movie title, A TO Z</option>
+                <option value="Z TO A">Movie title, Z TO A</option>
+                <option value="NEWEST TO OLDEST">Release date, newest to oldest</option>
+                <option value="OLDEST TO NEWEST">Release date, oldest to newest</option>
+            </select>
+        </div>
+        <div class="movies__list">
+
+            <!-- Movie cards will be dynamically inserted here -->
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">OMDb Movies Project by Tawhid Talal</p>
+    </footer>
+    <script src="./index.js"></script>
+</body>
+</html>
