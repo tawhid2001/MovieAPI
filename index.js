@@ -50,7 +50,7 @@ async function filterMovies(event) {
 
 async function fetchMovies(query) {
   const movies = await fetch(
-    `http://www.omdbapi.com/?apikey=e404cb6f&s=${query}`,
+    `https://www.omdbapi.com/?apikey=e404cb6f&s=${query}`,
   );
   const moviesData = await movies.json();
   allMovies = moviesData.Search;
