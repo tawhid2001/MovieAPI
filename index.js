@@ -9,8 +9,14 @@ function onChangeSearch(event) {
   const query = event.target.value;
   const mainTitle = document.querySelector(".main__title");
   mainTitle.textContent = `Search results for "${query}"`;
+  if (query.trim() === "") {
+    mainTitle.textContent = "Search for a movie";
+    const moviesList = document.querySelector(".movies__list");
+    moviesList.innerHTML = `Please enter a search term.`;
+    return;
+  }
   const moviesList = document.querySelector(".movies__list");
-  if (allMovies.length === 0 && query.trim() !== "") {
+  if (allMovies.length === 0) {
     moviesList.innerHTML = `
                 <div class="movies__loading--spinner">
                 <i class="fas fa-spinner"></i>
@@ -87,12 +93,19 @@ if (searchInput && searchForm) {
       event.preventDefault();
       onChangeSearch({ target: searchInput });
     }
+    else if (searchInput.value.trim() === "") {
+      const moviesList = document.querySelector(".movies__list");
+      moviesList.innerHTML = `Please enter a search term.`;
+    }
   });
 
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (searchInput.value.trim() !== "") {
       onChangeSearch({ target: searchInput });
+    }else {
+      const moviesList = document.querySelector(".movies__list");
+      moviesList.innerHTML = `Please enter a search term.`;
     }
   });
 }

@@ -79,6 +79,7 @@ body {
 /* Main block */
 .main {
     max-width: 1200px;
+    width: 100%;
     flex: 1;
     padding: 2rem;
     display: flex;
@@ -88,7 +89,7 @@ body {
 
 .main__header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin-bottom: 1rem;
 }
